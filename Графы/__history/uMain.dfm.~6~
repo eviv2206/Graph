@@ -1,0 +1,146 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = #1041#1086#1073#1088#1080#1082' '#1051#1072#1073#1086#1088#1072#1090#1086#1088#1085#1072#1103' '#1088#1072#1073#1086#1090#1072' '#1085#1072' '#1075#1088#1072#1092#1099
+  ClientHeight = 524
+  ClientWidth = 854
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  Scaled = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object HeaderLabel: TLabel
+    Left = 18
+    Top = 20
+    Width = 667
+    Height = 21
+    Caption = 
+      #1055#1088#1086#1075#1088#1072#1084#1084#1072' '#1086#1089#1091#1097#1077#1089#1090#1074#1083#1103#1077#1090' '#1087#1086#1080#1089#1082' '#1074' '#1096#1080#1088#1080#1085#1091' '#1074' '#1075#1088#1072#1092#1077', '#1079#1072#1076#1072#1085#1085#1086#1084' '#1084#1072#1090#1088#1080#1094#1077#1081 +
+      ' '#1089#1084#1077#1078#1085#1086#1089#1090#1080
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = True
+  end
+  object AskLabel: TLabel
+    Left = 24
+    Top = 104
+    Width = 239
+    Height = 21
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1095#1080#1089#1083#1086' '#1074#1077#1088#1096#1080#1085' '#1075#1088#1072#1092#1072':'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+  end
+  object MatrixLabel: TLabel
+    Left = 24
+    Top = 144
+    Width = 168
+    Height = 21
+    Caption = #1052#1072#1090#1088#1080#1094#1072' '#1089#1084#1077#1078#1085#1086#1089#1090#1080':'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+  end
+  object VerticeEdit: TSpinEdit
+    Left = 280
+    Top = 99
+    Width = 121
+    Height = 31
+    EditorEnabled = False
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    MaxValue = 15
+    MinValue = 1
+    ParentFont = False
+    TabOrder = 0
+    Value = 1
+    OnChange = VerticeEditChange
+  end
+  object sgMatrix: TStringGrid
+    Left = 24
+    Top = 177
+    Width = 377
+    Height = 339
+    ColCount = 2
+    DefaultColWidth = 36
+    DefaultRowHeight = 36
+    RowCount = 2
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goTabs, goFixedRowDefAlign]
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 1
+  end
+  object StartButton: TButton
+    Left = 512
+    Top = 144
+    Width = 121
+    Height = 33
+    Caption = #1055#1054#1045#1061#1040#1051#1048'!!'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    OnClick = StartButtonClick
+  end
+  object StartPointEdit: TSpinEdit
+    Left = 512
+    Top = 99
+    Width = 121
+    Height = 31
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    MaxValue = 15
+    MinValue = 1
+    ParentFont = False
+    TabOrder = 3
+    Value = 1
+  end
+  object SpinEdit1: TSpinEdit
+    Left = 664
+    Top = 99
+    Width = 121
+    Height = 31
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    MaxValue = 15
+    MinValue = 1
+    ParentFont = False
+    TabOrder = 4
+    Value = 1
+  end
+end

@@ -1,0 +1,164 @@
+unit uMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.Samples.Spin, uVisualisation;
+
+type
+
+     TMatrix = Array of Array of Integer;
+
+     TPoint = Record
+        CenterX, CenterY: Integer;
+        Color: TColor;
+        SinAlfa, CosAlfa: Real;
+    End;
+
+    TBoolArr = Array of Boolean;
+    TPointsArr = Array of TPoint;
+
+  TfrmMain = class(TForm)
+    HeaderLabel: TLabel;
+    AskLabel: TLabel;
+    VerticeEdit: TSpinEdit;
+    MatrixLabel: TLabel;
+    sgMatrix: TStringGrid;
+    btnShort: TButton;
+    StartPointEdit: TSpinEdit;
+    SpinEdit1: TSpinEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    btnLong: TButton;
+    procedure VerticeEditChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnShortClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    Function CreateMatrix(): TMatrix;
+  end;
+
+Const
+  StartX = 300;
+  StartY = 300;
+  AreaRadius = 200;
+  NodeRadius = 40;
+
+
+
+var
+  frmMain: TfrmMain;
+implementation
+
+{$R *.dfm}
+
+procedure TfrmMain.FormCreate(Sender: TObject);
+begin
+    sgMatrix.Cells[1,0] := '  1 ';
+    sgMatrix.Cells[0,1] := '  1 ';
+end;
+
+Procedure DrawGraph(Canvas: TCanvas; N: Integer; Matrix: TMatrix; Var PointsArr: TPointsArr);
+Var
+    Alfa: Real;
+    I, J: Integer;
+    CenterX, CenterY: Integer;
+    Str: String;
+Begin
+    Alfa := 2*Pi/N;
+    With Canvas do
+    Begin
+        Font.Color := clRed;
+        Font.Size := 12;
+        Font.Style := [fsBold];
+
+        For I := 0 to (N - 1) do
+        Begin
+            CenterX := Round(AreaRadius * Sin(Alfa * I)) + StartX;
+            CenterY := Round(AreaRadius * Cos(Alfa * I)) + StartY;
+            PointsArr[I].CenterX := CenterX;
+            PointsArr[I].CenterY := CenterY;
+            PointsArr[I].SinAlfa := Alfa * I;
+            PointsArr[I].CosAlfa := Alfa * I;
+        End;
+
+        Pen.Color := clGreen;
+        Pen.Width := 3;
+        For I := 0 to (N -1) do
+        Begin
+            For J := 0 to (N - 1) do
+            Begin
+                If ((Matrix[I, J] <> 0) and (I = J)) then
+                Begin
+                    Ellipse(PointsArr[J].CenterX - 40, PointsArr[J].CenterY - 40, PointsArr[J].CenterX, PointsArr[J].CenterY);
+                End
+                Else if ((Matrix[I, J] <> 0) and (I <> J)) then
+                Begin
+                    MoveTo(PointsArr[I].CenterX, PointsArr[I].CenterY);
+                    LineTo(PointsArr[J].CenterX, PointsArr[J].CenterY);
+                    Ellipse(PointsArr[J].CenterX - 40, PointsArr[J].CenterY - 40, PointsArr[J].CenterX, PointsArr[J].CenterY);
+                End;
+            End;
+        End;
+        For I := 0 to (N - 1) do
+        Begin
+            Brush.Color := PointsArr[I].Color;
+            Ellipse(PointsArr[I].CenterX - NodeRadius div 2,
+                        PointsArr[I].CenterY - NodeRadius div 2, PointsArr[I].CenterX + NodeRadius div 2,
+                        PointsArr[I].CenterY + NodeRadius div 2);
+            Str := IntToStr(I + 1);
+            TextOut(PointsArr[I].CenterX - (TextWidth(Str) div 2), PointsArr[I].CenterY - (TextHeight(Str) div 2), Str);
+        End;
+    End;
+
+End;
+
+procedure TfrmMain.btnShortClick(Sender: TObject);
+Var
+    ResultArr: TPointsArr;
+    Matrix: TMatrix;
+    N: Integer;
+    Output: String;
+    Visual: TfrmVisual;
+begin
+    Matrix := CreateMatrix();
+    SetLength(ResultArr, VerticeEdit.Value);
+    Try
+        Visual := TfrmVisual.Create(Self);
+        DrawGraph(Visual.PaintArea.Canvas, VerticeEdit.Value, Matrix, ResultArr);
+        Visual.ShowModal();
+    Finally
+        Visual.Free();
+    End;
+end;
+
+Function TfrmMain.CreateMatrix(): TMatrix;
+Var
+    Matrix: TMatrix;
+    N, I, J: Integer;
+Begin
+    N := VerticeEdit.Value;
+    SetLength(Matrix, N, N);
+    For I := 0 to (N - 1) do
+        For J := 0 to (N - 1) do
+        Begin
+            Matrix[I, J] := StrToInt(sgMatrix.Cells[J + 1, I + 1]);
+        End;
+    Result := Matrix;
+End;
+
+procedure TfrmMain.VerticeEditChange(Sender: TObject);
+begin
+    sgMatrix.RowCount := VerticeEdit.Value + 1;
+    sgMatrix.ColCount := VerticeEdit.Value + 1;
+    sgMatrix.Cells[VerticeEdit.Value,0] := '  ' + IntToStr(VerticeEdit.Value);
+    sgMatrix.Cells[0,VerticeEdit.Value] := '  ' + IntToStr(VerticeEdit.Value);
+end;
+
+
+
+end.

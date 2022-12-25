@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.318,=C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.091,=C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.261,C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\Unit1.pas=C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\uVisualisation.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.146,C:\Users\Compik\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\Graph.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.992,C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\ListUnit.pas=C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.603,C:\Users\Compik\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\uMain.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.603,C:\Users\Compik\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\uMain.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.836,=C:\Users\Compik\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.261,C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\Unit1.dfm=C:\Users\Compik\Documents\2 курс. ПОИТ. 3 семестр\АиСД. Лабораторные работы\Графы\uVisualisation.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

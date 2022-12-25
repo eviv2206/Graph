@@ -1,0 +1,70 @@
+unit uMain;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.Samples.Spin;
+
+type
+
+     TMatrix = Array of Array of Integer;
+
+  TfrmMain = class(TForm)
+    HeaderLabel: TLabel;
+    AskLabel: TLabel;
+    VerticeEdit: TSpinEdit;
+    MatrixLabel: TLabel;
+    sgMatrix: TStringGrid;
+    StartButton: TButton;
+    StartPointEdit: TSpinEdit;
+    SpinEdit1: TSpinEdit;
+    procedure VerticeEditChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    Function CreateMatrix(): TMatrix;
+  end;
+
+
+
+var
+  frmMain: TfrmMain;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmMain.FormCreate(Sender: TObject);
+begin
+    sgMatrix.Cells[1,0] := '  1 ';
+    sgMatrix.Cells[0,1] := '  1 ';
+end;
+
+Function TfrmMain.CreateMatrix(): TMatrix;
+Var
+    Matrix: TMatrix;
+    N, I, J: Integer;
+Begin
+    N := VerticeEdit.Value;
+    SetLength(Matrix, N, N);
+    For I := 0 to (N - 1) do
+        For J := 0 to (N - 1) do
+        Begin
+            Matrix[I, J] := StrToInt(sgMatrix.Cells[J + 1, I + 1]);
+        End;
+    Result := Matrix;
+End;
+
+procedure TfrmMain.VerticeEditChange(Sender: TObject);
+begin
+    sgMatrix.RowCount := VerticeEdit.Value + 1;
+    sgMatrix.ColCount := VerticeEdit.Value + 1;
+    sgMatrix.Cells[VerticeEdit.Value,0] := '  ' + IntToStr(VerticeEdit.Value);
+    sgMatrix.Cells[0,VerticeEdit.Value] := '  ' + IntToStr(VerticeEdit.Value);
+end;
+
+end.
